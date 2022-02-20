@@ -22,7 +22,7 @@ env = environ.Env()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 environ.Env.read_env()
 
 
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'bootstrap_datepicker_plus',
     "django_extensions",
+    "pwa"
    ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -62,6 +63,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE= [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -142,7 +144,7 @@ USE_TZ= True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL= 'static/'
-
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
@@ -196,3 +198,133 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #vendedor de prueba 
 MERCADO_PAGO_PUBLIC_KEY = 'APP_USR-6eb7add2-a62a-4312-a74f-06c1e9646fc3'
 MERCADO_PAGO_ACCESS_TOKEN = 'APP_USR-8847563472531392-021522-a4381f0595bf90e0ee6fa3b952f7d988-1075035405'
+
+
+
+#Manifest PWA
+PWA_APP_NAME = "LSM Shop"
+PWA_APP_DESCRIPTION = "Aplicación móvil información de negocios"
+PWA_APP_THEME_COLOR = "#3477f5"
+PWA_APP_BACKGROUND_COLOR = "#6699f7"
+PWA_APP_START_URL = "/"
+PWA_APP_ICONS = [
+    {
+        'src': '/static/pwa/img/AyM.png',
+        'sizes': '500x500'
+    },
+    {
+        "src": "/static/pwa/img/android-icon-36x36.png",
+        "sizes": "36x36",
+        "type": "image\/png",
+        "density": "0.75"
+    },
+    {
+        "src": "/static/pwa/img/android-icon-48x48.png",
+        "sizes": "48x48",
+        "type": "image\/png",
+        "density": "1.0"
+    },
+    {
+        "src": "/static/pwa/img/android-icon-72x72.png",
+        "sizes": "72x72",
+        "type": "image\/png",
+        "density": "1.5"
+    },
+    {
+        "src": "/static/pwa/img/android-icon-96x96.png",
+        "sizes": "96x96",
+        "type": "image\/png",
+        "density": "2.0"
+    },
+    {
+        "src": "/static/pwa/img/android-icon-144x144.png",
+        "sizes": "144x144",
+        "type": "image\/png",
+        "density": "3.0"
+    },
+    {
+        "src": "/static/pwa/img/android-icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image\/png",
+        "density": "4.0"
+    }
+
+
+
+]
+
+PWA_APP_ICONS_APPLE = [
+    {
+        'src': '/static/pwa/img/AyM.png',
+        'sizes': '500x500'
+    },
+    {
+        "src": "/static/pwa/img/apple-icon-57x57.png",
+        "sizes": "57x57",
+        "type": "image\/png",
+        "density": "0.75"
+    },
+    {
+        "src": "/static/pwa/img/apple-icon-60x60.png",
+        "sizes": "60x60",
+        "type": "image\/png",
+        "density": "0.75"
+    },
+    {
+        "src": "/static/pwa/img/apple-icon-72x72.png",
+        "sizes": "72x72",
+        "type": "image\/png",
+        "density": "1.5"
+    },
+    {
+        "src": "/static/pwa/img/apple-icon-76x76.png",
+        "sizes": "76x76",
+        "type": "image\/png",
+        "density": "1.5"
+    },
+    {
+        "src": "/static/pwa/img/apple-icon-114x114.png",
+        "sizes": "114x114",
+        "type": "image\/png",
+        "density": "2.0"
+    },
+    {
+        "src": "/static/pwa/img/apple-icon-120x120.png",
+        "sizes": "120x120",
+        "type": "image\/png",
+        "density": "2.5"
+    },
+    {
+        "src": "/static/pwa/img/apple-icon-144x144.png",
+        "sizes": "144x144",
+        "type": "image\/png",
+        "density": "3.0"
+    },
+    {
+        "src": "/static/pwa/img/apple-icon-152x152.png",
+        "sizes": "152x152",
+        "type": "image\/png",
+        "density": "3.5"
+    },
+    {
+        "src": "/static/pwa/img/apple-icon-180x180.png",
+        "sizes": "180x180",
+        "type": "image\/png",
+        "density": "4.0"
+    }
+
+    
+]
+
+PWA_APP_SPLASH_SCREEN = [
+    {
+        'src': '/static/pwa/img/favicon-96x96.png',
+        'media': '(device-width: 320px) and (device-height:568px) and (-webkit-device-pixel-ratio: 2)'
+    }
+]
+PWA_APP_LANG = 'es'
+PWA_SERVICE_WORKER_PATH = "static/pwa/sw.js"
+
+
+## Whitenoise
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

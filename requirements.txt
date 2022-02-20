@@ -40,3 +40,8 @@ pytest-mock==3.5.1
 requests==2.25.1
 
 python-dotenv
+
+#heroku
+gunicorn
+psycopg2
+whitenoise
