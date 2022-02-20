@@ -14,6 +14,9 @@ from pathlib import Path
 import environ
 import os
 
+
+
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -142,8 +145,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR , "static"),]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
@@ -207,10 +210,21 @@ PWA_CONFIG = {
     "display": "standalone",
     "orientation": "portrait",
     "start_url": "/",
-    "icons": [{
-            'src': '/static/pwa/img/AyM.png',
-            'sizes': '500x500'
+    "icons": [
+
+        {
+        "src": "/static/pwa/img/AyM.png",
+        "type": "image/png",
+            "sizes": "500x500",
+            "purpose": "any maskable"
     },
+            {
+        "src": "/static/pwa/img/AyM-512x512.png",
+        "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "any"
+    },
+
         {
         "src": "/static/pwa/img/android-icon-36x36.png",
             "sizes": "36x36",
@@ -383,3 +397,7 @@ SW.close()
 
 # Whitenoise
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+import mimetypes
+mimetypes.add_type("text/css", ".css", True)
+print("something")
