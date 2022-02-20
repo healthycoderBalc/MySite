@@ -25,7 +25,6 @@ python-social-auth
 django-crispy-forms
 django-bootstrap-datepicker-plus
 typing-extensions
-#windows-curses
 attrs
 ipywidgets
 django-extensions
