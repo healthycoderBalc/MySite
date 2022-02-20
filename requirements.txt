@@ -29,7 +29,7 @@ attrs
 ipywidgets
 django-extensions
 django-model-utils
-django-pwa
+django-simple-pwa
 
 
 # Mercado pago?

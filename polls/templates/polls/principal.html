@@ -20,8 +20,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
 
-
-    {% progressive_web_app_meta %}
+    {% pwa_meta_data %}
+    
+    <!-- {% progressive_web_app_meta %} -->
     {% block title %}
 
 
@@ -31,6 +32,7 @@
 </head>
 
 <body>
+    {% pwa_meta_script %}
 
     {% include "polls/includes/navbar.html" %}
 
