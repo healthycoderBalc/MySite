@@ -28,7 +28,8 @@ typing-extensions
 windows-curses
 attrs
 ipywidgets
-
+django-extensions
+django-model-utils
 
 
 # Mercado pago?
