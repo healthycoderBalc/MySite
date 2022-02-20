@@ -1,6 +1,6 @@
 # from asyncio.streams import _ClientConnectedCallback
 # from curses.panel import bottom_panel
-from msilib.schema import CheckBox
+# from msilib.schema import CheckBox
 # from sys import last_traceback
 from attr import attr, attrs
 from django import forms
