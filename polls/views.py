@@ -1,6 +1,6 @@
 
 # Create your views here.
-from asyncio.windows_events import NULL
+# from asyncio.windows_events import NULL
 import mercadopago
 from django.views.generic import TemplateView
 from re import L
