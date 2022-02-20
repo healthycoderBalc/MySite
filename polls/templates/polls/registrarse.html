@@ -1,0 +1,52 @@
+{% extends "polls/principal.html" %}
+
+{% block content %}
+
+<style>
+    .social-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .btn a, .btn a:hover {
+      color: white;
+      text-decoration: none ;
+    }
+
+</style>
+
+
+
+{% load crispy_forms_tags %}
+<p>Ingresa con: </p>
+<div class="row">
+    <div class="col-md-8 mx-auto social-container my-2 order-md-1">
+        <button class="btn btn-danger mb-2">
+            <a href="{% url 'social:begin' 'google-oauth2' %}"> Google</a>
+        </button>
+        <button class="btn btn-primary mb-2">
+            <a href="{% url 'social:begin' 'facebook' %}">Facebook
+            </a>
+        </button>
+    </div>
+</div>
+
+<p>O registrate: </p>
+<form action="" method=POST>
+    {% csrf_token %}
+    {{form|crispy}}
+    <div class="d-grid gap-2 d-md-block">
+        <button class="btn btn-success" type="submit">Registrarse</button>
+    </div>
+    
+</form>
+<br>
+Si YA tienes una cuenta, ingresa aqui:
+<div class="d-grid gap-2 d-md-block">
+    <a href="/ingresar" class="btn btn-primary">Ingresar</a>
+</div>
+
+
+
+
+{% endblock %}

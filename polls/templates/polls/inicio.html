@@ -1,0 +1,172 @@
+{% extends "polls/principal.html" %}
+{% block title %}
+<title>{{titulo}}</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+
+
+<!-- ################# -->
+<!-- Barra de busqueda -->
+<!-- ################# -->
+<div class="justify-content-centery">
+    <form class="d-flex" action="{% url 'polls:principal' %}" method="get">
+        <input name="q" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+    </form>
+</div>
+<br>
+
+
+
+
+<!-- ################# -->
+<!-- Filtros -->
+<!-- ################# -->
+
+<select class="form-select" aria-label="Select" onchange="location = this.value;">
+    <option selected>Filtrar por</option>
+    <optgroup label="Rubro">
+        {% for cat in categorias %}
+        <option value="/negociosPorRubro/{{cat.id}}">{{cat.nombre}}</option>
+        {% endfor %}
+    </optgroup>
+    <option value="/seleccionHorarios">Horario</option>
+    {% if rubro or dia %}
+        <option value="/">Mostrar todos</option>
+    {% endif %}
+</select>
+
+
+<!-- ################# -->
+<!-- Boton para mostrar todos los negocios tras busqueda -->
+<!-- ################# -->
+
+{% if query != None or rubro or dia %}
+<div class="d-grid gap-2 d-md-block">
+    <a href="/" class="btn btn-outline-success">Mostrar todos los negocios</a>
+</div>
+<!-- <br> -->
+{% endif %}
+
+
+
+{% if rubro %}
+<div class="container">
+    <div class="row text-center border border-5 rounded-3 d-flex align-items-center justify-content-center"
+        style="height: 100px;">
+        <p>Negocios del rubro <b>{{rubro.nombre}}</b></p>
+    </div>
+</div>
+<!-- <br> -->
+{% endif %}
+
+{% if dia %}
+<div class="container">
+    <div class="row text-center border border-5 rounded-3 d-flex align-items-center justify-content-center"
+        style="height: 100px;">
+        <p>Negocios que abren el día {{dia}}</p>
+        <p>Entre {{horaAbre}} y {{horaCierra}}</p>
+    </div>
+</div>
+<!-- <br> -->
+{% endif %}
+
+<br>
+<!-- ################# -->
+<!-- Lista de negocios -->
+<!-- ################# -->
+
+<!-- Lista de negocios Destacados -->
+<div class="row">
+    <h4 class="bg bg-light">Negocios destacados: </h4>
+    {% for neg in negociosPaid %}
+    <div class="col-6 col-md-4 mb-3">
+        <div class="card-header">
+            <i class="bi bi-star text-warning"></i>
+        </div>
+        <div class="card h-80">
+            <div class="card">
+                <img src="{{ neg.fotoNegocio.url }}" class="card-img-top" />
+            </div>
+            <div class="card-body">
+                <span class="card-title">
+                    <b>{{ neg.nombre }}</b>
+                </span>
+                <a href="/mostrarNegocio/{{neg.id}}" class="btn btn-primary">Ver</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<hr class="mt-1 mb-3 text-dark" style="border: 2px solid"/>
+
+
+
+
+<!-- Lista de negocios Base -->
+<!-- <div class="row">
+    {% for neg in negociosBase %}
+    <div class="col-6 col-md-4 mb-3">
+
+        <div class="card h-100">
+            <div class="card">
+                <img src="{{ neg.fotoNegocio.url }}" class="card-img-top" />
+            </div>
+            <div class="card-body">
+                <span class="card-title">
+                    <b>{{ neg.nombre }}</b>
+                </span>
+            </div>
+            <div class="card-body">
+                <a href="/mostrarNegocio/{{neg.id}}" class="btn btn-primary">Ver</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<hr>
+<p>base</p> -->
+<!-- Lista de TODOS los negocios -->
+
+
+<div class="row">
+    <h4 class="bg bg-light">Todos los negocios: </h4>
+    {% for neg in negocios %}
+    <div class="col-6 col-md-4 mb-3">
+
+        <div class="card h-100">
+            <div class="card">
+                <img src="{{ neg.fotoNegocio.url }}" class="card-img-top" />
+            </div>
+            <div class="card-body">
+                <span class="card-title">
+                    <b>{{ neg.nombre }}</b>
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2 d-md-block">
+                    <a href="/mostrarNegocio/{{neg.id}}" class="btn btn-primary">Ver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<!-- ################# -->
+<!-- Boton para mostrar todos los negocios tras busqueda -->
+<!-- ################# -->
+
+{% if query != None or rubro or dia %}
+<div class="d-grid gap-2 d-md-block">
+    <a href="/" class="btn btn-outline-success">Mostrar todos los negocios</a>
+</div>
+{% endif %}
+
+
+{% endblock %}

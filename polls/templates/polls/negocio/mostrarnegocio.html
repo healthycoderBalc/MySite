@@ -1,0 +1,71 @@
+{% extends "polls/principal.html" %}
+
+{% block title %}
+<title>{{titulo}}</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+
+
+
+
+<div class="row">
+    <div class="col-12 col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header justify-content-end">
+
+                <span class="card-title font-weight-bold"><b>{{ data.nombre }}</b>
+                </span>
+
+            </div>
+            <div class="card-body">
+
+                <div class="mw-100 bg-light text-dark">
+                    <p><b>Contactar: </b></p>
+                </div>
+                <div class="row ">
+                    <div class="col-12 col-md-6 mb-3 d-flex justify-content-between">
+                    {% for contacto in contactos %}
+                                <a class="{{contacto.getColor}}" href="{{contacto.getEnlace}}">
+                                    <i class="{{contacto.getIcono}}"></i>
+                                </a>
+                    {% endfor %}
+                    </div>
+                </div>
+                <div class="mw-100 bg-light text-dark">
+                    <p><b>Rubros: </b></p>
+                </div>
+                <p>{% for rubro in rubros %}
+                    {{ rubro.rubro.nombre }},
+                    {% endfor %}</p>
+
+                <div class="mw-100 bg-light text-dark">
+                    <p><b>Horario: </b></p>
+                </div>
+                {% for horario in horarios %}
+                <p>{{ horario.diaSemana.dia }}: {{horario.horaAbre}} - {{horario.horaCierra}}</p>
+                {% endfor %}
+                <div class="mw-100 bg-light text-dark">
+                    <span class="card-title"> <b>Dirección: </b> {{ data.direccion }}</span>
+                </div>
+                <br>
+                <div class="container">
+                    <div class="container">
+                        <img src="{{ data.fotoNegocio.url }}" class="card-img-top" />
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <a href="/" class="btn btn-primary">Volver</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- no olvidar hacerle el footer en el principal -->
+
+{% endblock %}

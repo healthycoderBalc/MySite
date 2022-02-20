@@ -1,0 +1,41 @@
+{% extends "polls/principal.html" %}
+
+{% block title %}
+<title>{{titulo}}</title>
+{% endblock %}
+
+{% block content %}
+
+<!-- ################# -->
+<!-- Barra de busqueda -->
+<!-- ################# -->
+<div class="justify-content-centery">
+    <form class="d-flex" action="{% url 'polls:admlCliente' %}" method="get">
+        <input name="q" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+    </form>
+</div>
+<br>
+
+
+<div class="row">
+    {% for data in dataset %}
+
+    <div class="col-12 col-md-6 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <span class="card-title">{{ data.user.first_name}} {{ data.user.last_name }}</span>
+            </div>
+            <div class="card-body">
+                <a href="/mostrarCliente/{{data.id}}" class="btn btn-primary">Ver</a>
+            </div>
+
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}
