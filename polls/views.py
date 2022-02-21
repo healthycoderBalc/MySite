@@ -1804,7 +1804,7 @@ def pago(request, id):
 
             urlbase = "https://quiet-headland-40275.herokuapp.com"
 
-            sdk = mercadopago.SDK(settings.heroku.MERCADO_PAGO_ACCESS_TOKEN)
+            sdk = mercadopago.SDK(settings.MERCADO_PAGO_ACCESS_TOKEN)
             preference_data = {
                 "items": [
                     {
