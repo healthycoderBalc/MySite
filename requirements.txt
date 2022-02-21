@@ -46,5 +46,5 @@ psycopg2
 whitenoise
 
 
-cloudinary
-cloudinary_storage
+cloudinary 
+django-cloudinary_storage
