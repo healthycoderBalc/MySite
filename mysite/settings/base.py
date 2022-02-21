@@ -155,8 +155,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = (
     # Facebook
-    # 'social_core.backends.facebook.FacebookOAuth2',
-    'polls.views.CustomFacebookOauth',
+    'social_core.backends.facebook.FacebookOAuth2',
+    # 'polls.views.CustomFacebookOauth',
 
     # Google
     'social_core.backends.google.GoogleOAuth2',
@@ -170,6 +170,8 @@ SOCIAL_AUTH_FACEBOOK_KEY = 963275077611461
 # SOCIAL_AUTH_FACEBOOK_KEY = env('SOCIAL_AUTH_FACEBOOK_KEY')
 SOCIAL_AUTH_FACEBOOK_SECRET = "64bd6ee74424038a29c55aaa244ec542"
 # SOCIAL_AUTH_FACEBOOK_SECRET = env("SOCIAL_AUTH_FACEBOOK_SECRET")
+SOCIAL_AUTH_FACEBOOK_REDIRECT_STATE_FIELD = 'state'
+
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
