@@ -30,6 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
      # Python Social Auth URLs 
     # path('', include('social.apps.django_app.urls', namespace='social')),
+    path('oauth/', include('social_django.urls', namespace='social')),
     path('', include('pwa.urls')),
 ]
 
