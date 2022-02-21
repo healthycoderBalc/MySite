@@ -29,7 +29,7 @@ urlpatterns = [
     path('', include('polls.urls')),
     path('admin/', admin.site.urls),
      # Python Social Auth URLs 
-    path('', include('social.apps.django_app.urls', namespace='social')),
+    # path('', include('social.apps.django_app.urls', namespace='social')),
     path('', include('pwa.urls')),
 ]
 
