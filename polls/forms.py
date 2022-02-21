@@ -53,7 +53,7 @@ class ContactFormForm(forms.ModelForm):
         model = ContactForm
         fields = "__all__"
 
-
+many2manyhelptext = "Debe seleccionar al menos una opción"
 class BusinessForm(forms.ModelForm):
     # specify the name of model to use
     class Meta:
@@ -64,7 +64,7 @@ class BusinessForm(forms.ModelForm):
             'formasContacto': forms.CheckboxSelectMultiple,
             'diasSemana': forms.CheckboxSelectMultiple
         }
-    
+
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
         super(BusinessForm, self).__init__(*args, **kwargs)
@@ -72,6 +72,16 @@ class BusinessForm(forms.ModelForm):
         print(self.fields['cliente'].queryset)
         self.fields["paid"].disabled = True
         self.fields["fecha_ultimo_pago"].disabled = True
+
+        self.fields['diasSemana'].help_text = many2manyhelptext
+        self.fields['formasContacto'].help_text = many2manyhelptext
+        self.fields['rubros'].help_text = many2manyhelptext
+               
+        self.fields['formasContacto'].label = "Formas de contacto"
+        self.fields['diasSemana'].label = "Días en que está abierto"
+
+
+
 
 
 
@@ -98,6 +108,7 @@ class BusinessAreaForm(forms.ModelForm):
         model = BusinessArea
         fields = "__all__"
 
+datosContactohelpText = "Para número, ingrese el codigo de area seguido del 15 y luego el numero: ej: 343154444444.<br>Para Facebook copie y pegue el link de perfil completo: p ej: www.facebook.com/nombredeminegocio. <br> Para Instagram escriba su nombre de usuario: p ej. misupernegocio<br><br>"
 class BusinessContactFormForm(forms.ModelForm):
     # specify the name of model to use
     class Meta:
@@ -112,6 +123,11 @@ class BusinessContactFormForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields["formaContacto"].disabled = True
         self.fields["negocio"].disabled = True
+        
+        self.fields['datosContacto'].help_text = datosContactohelpText
+
+
+
 
 helpText = "La contraseña no puede ser muy similar a los otros datos; debe contener al menos 8 caracteres; no puede ser muy común; no puede contener solo números<br><br>"
 

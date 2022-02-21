@@ -43,6 +43,8 @@ def cargarCliente(request):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/perfilCliente')
+        else:
+            return redirect("polls:verificarCampos")
     else:
         form = ClientForm(user=request.user)
 
@@ -198,6 +200,8 @@ def cargarSuscripcion(request):
                 if form.is_valid():
                     form.save()
                     return HttpResponseRedirect('/listarSuscripcionesAdmin/')
+                else:
+                    return redirect("polls:verificarCampos")
             else:
                 form = SubscriptionForm()
 
@@ -350,6 +354,8 @@ def cargarDiaSemana(request):
                 if form.is_valid():
                     form.save()
                     return HttpResponseRedirect('/mostrarDiasemana/' + str(form.instance.pk))
+                else:
+                    return redirect("polls:verificarCampos")
             else:
                 form = DayweekForm()
 
@@ -482,6 +488,8 @@ def cargarRubro(request):
                 if form.is_valid():
                     form.save()
                     return HttpResponseRedirect('/mostrarRubro/' + str(form.instance.pk))
+                else:
+                    return redirect("polls:verificarCampos")
             else:
                 form = HeadingForm()
 
@@ -614,6 +622,8 @@ def cargarFormaContacto(request):
                 if form.is_valid():
                     form.save()
                     return HttpResponseRedirect('/mostrarFormacontacto/' + str(form.instance.pk))
+                else:
+                    return redirect("polls:verificarCampos")
             else:
                 form = ContactFormForm()
 
@@ -770,6 +780,7 @@ def cargarNegocio(request):
             form = BusinessForm(request.POST or None,
                                 request.FILES, user=request.user)
             if form.is_valid():
+                print("esvalido")
                 form.save()
                 if form.instance.suscripcion.nombre == 'Base':
                     return HttpResponseRedirect('/mostrarNegocioAdd/' + str(form.instance.pk))
@@ -780,6 +791,8 @@ def cargarNegocio(request):
                     print(request.session["business_id"])
                     return redirect("polls:process", id = form.instance.pk)
                     # return HttpResponseRedirect('/suscripcionPaga/'+ str(form.instance.pk))
+            else:
+                return redirect("polls:verificarCampos")
         else:
             form = BusinessForm(user=request.user)
 
@@ -984,6 +997,8 @@ def cargarNegocioHoraDia(request):
             if form.is_valid():
                 form.save()
                 return HttpResponseRedirect('/mostrarNegociohorariodia/' + str(form.instance.pk))
+            else:
+                return redirect("polls:verificarCampos")
         else:
             form = BusinesshourdayForm()
 
@@ -1113,6 +1128,8 @@ def cargarNegocioRubro(request):
             if form.is_valid():
                 form.save()
                 return HttpResponseRedirect('/mostrarNegociorubro/' + str(form.instance.pk))
+            else:
+                return redirect("polls:verificarCampos")
         else:
             form = BusinessAreaForm()
 
@@ -1242,6 +1259,8 @@ def cargarNegocioFormaContacto(request):
             if form.is_valid():
                 form.save()
                 return HttpResponseRedirect('/mostrarNegocioformacontacto/' + str(form.instance.pk))
+            else:
+                return redirect("polls:verificarCampos")
         else:
             form = BusinessContactFormForm()
 
@@ -1601,6 +1620,11 @@ def delete_perfil(request):
 def noAutorizado(request):
     context = {}
     return render(request, "polls/unauthorized.html", context)
+
+def verificarCampos(request):
+    context = {}
+    direccion = "polls/verificarcampos.html"
+    return render(request, direccion, context)
 
 
 # ----------------------------------------------------------------------------------- #
