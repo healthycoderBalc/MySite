@@ -53,7 +53,7 @@ class ContactFormForm(forms.ModelForm):
         model = ContactForm
         fields = "__all__"
 
-many2manyhelptext = "Debe seleccionar al menos una opción"
+many2manyhelptext = "Debe seleccionar al menos una opción<br><br>"
 class BusinessForm(forms.ModelForm):
     # specify the name of model to use
     class Meta:
