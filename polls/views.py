@@ -1960,3 +1960,10 @@ def downgradeBusinesses(request):
         print("no user")
 
     return render(request, direccion, context)
+
+
+from social_core.backends.facebook import FacebookOAuth2
+
+
+class CustomFacebookOauth(FacebookOAuth2):
+    REDIRECT_STATE = False

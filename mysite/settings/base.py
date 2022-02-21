@@ -155,7 +155,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = (
     # Facebook
-    'social_core.backends.facebook.FacebookOAuth2',
+    # 'social_core.backends.facebook.FacebookOAuth2',
+    'polls.views.CustomFacebookOauth',
 
     # Google
     'social_core.backends.google.GoogleOAuth2',
