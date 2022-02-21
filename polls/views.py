@@ -1800,9 +1800,11 @@ def pago(request, id):
         if negocio.cliente == cliente:
             suscripcion = negocio.suscripcion
             monto = suscripcion.precioMensual
-            urlbase = "https://localhost:8080" #cambiar a dominio
+            # urlbase = "https://localhost:8080" #cambiar a dominio
 
-            sdk = mercadopago.SDK(settings.MERCADO_PAGO_ACCESS_TOKEN)
+            urlbase = "https://quiet-headland-40275.herokuapp.com"
+
+            sdk = mercadopago.SDK(settings.heroku.MERCADO_PAGO_ACCESS_TOKEN)
             preference_data = {
                 "items": [
                     {

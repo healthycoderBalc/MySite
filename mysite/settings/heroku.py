@@ -13,3 +13,6 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 DATABASES = {
     "default": env.db(),
 }
+
+
+MERCADO_PAGO_ACCESS_TOKEN= env("MERCADO_PAGO_ACCESS_TOKEN")
