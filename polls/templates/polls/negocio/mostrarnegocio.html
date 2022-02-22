@@ -44,8 +44,13 @@
                 <div class="mw-100 bg-light text-dark">
                     <p><b>Horario: </b></p>
                 </div>
-                {% for horario in horarios %}
-                <p>{{ horario.diaSemana.dia }}: {{horario.horaAbre}} - {{horario.horaCierra}}</p>
+                {% for dia in dias2 %}
+                    <p><b>{{dia.dia}}:</b></p><p>
+                    {% for horario in horarios %}
+                        {% if horario.diaSemana.dia == dia.dia %}
+                            {{horario.horaAbre}}-{{horario.horaCierra}} |
+                        {% endif %}
+                    {% endfor %}</p>
                 {% endfor %}
                 <div class="mw-100 bg-light text-dark">
                     <span class="card-title"> <b>Dirección: </b> {{ data.direccion }}</span>

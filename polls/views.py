@@ -855,6 +855,10 @@ def mostrarNegocio(request, id):
         negocio__id=id).order_by('diaSemana__id')
     context["horarios"] = horarios
 
+    dias2 = Dayweek.objects.filter(business__id = id).order_by('id').distinct()
+    context["dias2"] = dias2
+    print(dias2)
+
     # add the dictionary during initialization
     context["data"] = Business.objects.get(id=id)
     context["titulo"] = titulo
@@ -880,6 +884,10 @@ def mostrarNegocioAdd(request, id):
             horarios = Businesshourday.objects.filter(
                 negocio__id=id).order_by('diaSemana__id')
             context["horarios"] = horarios
+
+            dias2 = Dayweek.objects.filter(business__id = id).order_by('id').distinct()
+            context["dias2"] = dias2
+            print(dias2)
 
             # add the dictionary during initialization
             context["data"] = Business.objects.get(id=id)
@@ -1014,6 +1022,44 @@ def cargarNegocioHoraDia(request):
 
     return render(request, direccion, context)
 
+def cargarNegocioHorarioDiaPre(request, negocio_id, dia_id):
+    context = {}
+
+    if request.user.is_authenticated:
+        cliente = Client.objects.get(user__pk=request.user.id)
+        negocio = Business.objects.get(id = negocio_id)
+        diaSemana = Dayweek.objects.get(id = dia_id)
+        
+        if negocio.cliente == cliente:
+            # negocioHD = Businesshourday.objects.create(negocio = negocio, diaSemana = dia)
+            # negocioHD.save()
+        
+            if request.method == 'POST':
+                form = BusinesshourdayNForm(request.POST or None, negocio=negocio, diaSemana = diaSemana )
+                if form.is_valid():
+                    form.save()
+                    return HttpResponseRedirect('/mostrarNegocioAdd/' + negocio_id)
+                else:
+                    return redirect("polls:verificarCampos")
+            else:
+                form = BusinesshourdayNForm(negocio=negocio, diaSemana = diaSemana)
+            titulo = "Negocio Horario Dia"
+            context['form'] = form
+            context["titulo"] = titulo
+            direccion = "polls/cargar.html"
+
+        else:
+            context["titulo"] = "No autorizado"
+            direccion = "polls/unauthorized.html"
+            print("no user")
+    else:
+        context["titulo"] = "No autorizado"
+        direccion = "polls/unauthorized.html"
+        print("no user")
+
+    return render(request, direccion, context)
+
+
 
 def listarNegocioHorarioDias(request):
     context = {}
@@ -1061,6 +1107,7 @@ def update_negociohorariodia(request, id):
 
             # add form dictionary to context
             titulo = "Negocio Horario Dia"
+            context["negocio"] = negocio
             context["form"] = form
             context["titulo"] = titulo
             direccion = "polls/intermedio/updatenegociohorariodia.html"

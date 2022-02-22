@@ -103,6 +103,7 @@ urlpatterns = [
     
     # --------------------NegocioHoraDia------------------------------------------- #
      path('cargarNegocioHoraDia/', views.cargarNegocioHoraDia, name='cargarNegocioHoraDia'),
+     path('cargarNegociohorariodiaPre/<negocio_id>/<dia_id>', views.cargarNegocioHorarioDiaPre, name='cargarNegocioHorarioDiaPre'),
      path('listarNegociohorariodias/', views.listarNegocioHorarioDias, name='listarNegocioHorarioDias'),
      path('mostrarNegociohorariodia/<id>', views.mostrarNegocioHorarioDia, name='mostrarNegocioHorarioDia'),
      path('updateNegociohorariodia/<id>', views.update_negociohorariodia, name='update_negociohorariodia'),

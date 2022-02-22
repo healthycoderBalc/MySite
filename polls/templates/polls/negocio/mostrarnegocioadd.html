@@ -38,20 +38,28 @@
                 {% endfor %}
 
                 <p><b>Horario: </b></p>
-                {% for horario in horarios %}
-                {% if horario.horaAbre and horario.horaCierra %}
+                {% for dia in dias2 %}
+                <p><b>{{dia}}:</b>
+                <a href="/cargarNegociohorariodiaPre/{{data.id}}/{{dia.id}}" class="btn btn-primary"><i
+                    class="bi bi-plus-lg"></i></a></p>
                 <p>
-                    {{ horario.diaSemana.dia }}: {{horario.horaAbre}} - {{horario.horaCierra}}
-                    <a href="/updateNegociohorariodia/{{horario.id}}" class="btn btn-primary"><i
-                            class="bi bi-pencil-square"></i></a>
-                </p>
-                {% else %}
-                <p>{{ horario.diaSemana.dia }}:
-                    <small>(No se ha añadido hora)</small>
-                    <a href="/updateNegociohorariodia/{{horario.id}}" class="btn btn-success"><i
-                            class="bi bi-plus-lg"></i></a>
-                </p>
-                {% endif %}
+                    {% for horario in horarios %}
+                        {% if horario.diaSemana.dia == dia.dia %}
+                            {% if horario.horaAbre and horario.horaCierra %}
+                                {{horario.horaAbre}} - {{horario.horaCierra}}
+                                    <a href="/updateNegociohorariodia/{{horario.id}}" class="btn btn-primary"><i
+                                            class="bi bi-pencil-square"></i></a>
+                                    
+                                </p>
+                            {% else %}
+                                {{ horario.diaSemana.dia }}:
+                                    <small>(No se ha añadido hora)</small>
+                                    <a href="/updateNegociohorariodia/{{horario.id}}" class="btn btn-success"><i
+                                            class="bi bi-plus-lg"></i></a>
+                                </p>
+                            {% endif %}    
+                        {% endif %}
+                    {% endfor %}
                 {% endfor %}
 
                 <p><b>Suscripción: </b></p>

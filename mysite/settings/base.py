@@ -42,7 +42,7 @@ SECRET_KEY = 'django-insecure-53th1vs%k)j1(q-j%z95yvs%!ls24%q0-2tt!3=#f7!z*n#b61
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -416,6 +416,6 @@ SW.close()
 # Whitenoise
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-import mimetypes
-mimetypes.add_type("text/css", ".css", True)
-print("something")
+# import mimetypes
+# mimetypes.add_type("text/css", ".css", True)
+# print("something")

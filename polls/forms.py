@@ -102,6 +102,29 @@ class BusinesshourdayForm(forms.ModelForm):
         self.fields["negocio"].disabled = True
         self.fields["diaSemana"].disabled = True
 
+class BusinesshourdayNForm(forms.ModelForm):
+    # specify the name of model to use
+
+    class Meta:
+        model = Businesshourday
+        fields = "__all__"
+        widgets = {
+            'horaAbre': TimePickerInput(),
+            'horaCierra': TimePickerInput(),
+            # 'negocio': forms.Select(attrs={"disabled" : "disabled"})
+        }
+    
+    def __init__(self, *args, **kwargs):
+        self.negocio = kwargs.pop('negocio', None)        
+        self.diaSemana = kwargs.pop('diaSemana', None)
+        super(BusinesshourdayNForm, self).__init__(*args, **kwargs)
+        self.fields["negocio"].queryset = Business.objects.filter(id = self.negocio.id)
+        self.fields['diaSemana'].queryset = Dayweek.objects.filter(id = self.diaSemana.id)
+
+
+
+
+
 class BusinessAreaForm(forms.ModelForm):
     # specify the name of model to use
     class Meta:
