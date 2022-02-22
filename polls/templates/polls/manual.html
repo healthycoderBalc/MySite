@@ -1,0 +1,62 @@
+{% extends "polls/principal.html" %}
+
+{% block title %}
+<title>{{titulo}}</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row text-center border border-5 rounded-3 d-flex align-items-center justify-content-center">
+        <h1>Manual de usuario</h1>
+
+        <p>Por medio de la aplicación LSM Shop se pueden tener dos roles principales: usuario y cliente.</p>
+        <p>Usuario:</p>
+        <ul>
+            <li>El usuario es quien hace uso de la aplicación sin necesidad de registrarse o iniciar sesión.</li>
+            <li>Si usted es un usuario podrá:</li>
+            <ul>
+                <li>Ver todos los negocios registrados en la aplicación: es la página de inicio</li>
+                <li>Contactar a los negocios según los datos provistos por los dueños o administradores de tal negocio:
+                    Al tocar en ver un negocio podrá ver la sección contactar con los íconos de cada forma de contacto
+                    disponible.</li>
+                <li>Ver la dirección, formas de contacto, foto del negocio, horarios de apertura y rubros especificados
+                    por el dueño o administrador del negocio: Al tocar en ver un negocio podrá ver toda esta
+                    información.</li>
+                <li>Buscar y filtrar negocios por nombre, horario o rubro específico:</li>
+                <ul>
+                    <li>En la página de inicio podrá ver una barra de búsqueda y el botón buscar; escriba el término en
+                        la barra de búsqueda y toque el botón buscar para buscar un negocio cuyo nombre contenga ese
+                        término.</li>
+                    <li>En la página de inicio podrá ver una lista desplegable que dice “Filtrar por”; seleccione
+                        horarios; será redireccionado a una página donde podrá escoger el día y un rango horario; toque
+                        en filtrar para encontrar los negocios que están abiertos en dicho horario.</li>
+                    <li>En la página de inicio podrá ver una lista desplegable que dice “Filtrar por”; seleccione el
+                        rubro deseado para filtrar para encontrar los negocios que pertenecen al rubro que especificó.
+                    </li>
+                </ul>
+                <li>Registrarse como cliente: Toque en el menú>Registrarse. Complete los datos requeridos o toque en el
+                    botón de registrarse a través de Google.</li>
+            </ul>
+        </ul>
+        <p>Cliente:</p>
+        <ul>
+            <li>El cliente es quien hace uso de la aplicación tras haberse registrado e iniciado sesión.</li>
+            <li>Si usted es un cliente podrá:</li>
+            <ul>
+                <li>Realizar todo lo que un usuario puede hacer—recuerde que usted ya está registrado.</li>
+                <li>Crear un negocio: Habiendo iniciado sesión, vaya a menú>mis negocios. Allí encontrará un botón para
+                    añadir un nuevo negocio. Toque ese botón y cargue los datos solicitados. Posteriormente puede
+                    agregar o modificar los datos de contacto y los horarios de apertura.</li>
+                <li>Ver y administrar sus negocios: Una vez que haya añadido algún negocio, y habiendo iniciado sesión,
+                    vaya a menú>mis negocios. Allí podrá ver un listado con todos sus negocios, con las opciones para
+                    verlos, modificarlos o darlos de baja.</li>
+                <li>Recuerde cerrar su sesión.</li>
+            </ul>
+        </ul>
+
+
+    </div>
+    <a class="btn btn-primary" href="/">Volver al inicio</a>
+</div>
+<br>
+{% endblock %}

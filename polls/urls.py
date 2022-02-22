@@ -29,6 +29,7 @@ urlpatterns = [
     path('ingresar/', views.entrar, name='entrar'),
     path('unauthorized/', views.noAutorizado, name='unauthorized'),
     path('verificarCampos/', views.verificarCampos, name='verificarCampos'),    
+    path('manual/', views.manual, name='manual'),
     path('perfilCliente', views.perfil, name="perfilCliente"),
     path('updateperfilCliente/', views.update_perfilCliente, name="updateperfilCliente"),
     path('updateperfilUser/', views.update_perfilUser, name="updateperfilCliente"),

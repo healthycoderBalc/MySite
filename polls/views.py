@@ -1673,6 +1673,11 @@ def verificarCampos(request):
     direccion = "polls/verificarcampos.html"
     return render(request, direccion, context)
 
+def manual(request):
+    context = {}
+    direccion = "polls/manual.html"
+    return render(request, direccion, context)
+
 
 # ----------------------------------------------------------------------------------- #
 # ---------------------------------Busqueda------------------------------------------ #
