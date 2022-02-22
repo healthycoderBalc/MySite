@@ -54,7 +54,7 @@
                     {% for horario in horarios %}
                         {% if horario.diaSemana.dia == dia.dia %}
                             {% if horario.horaAbre or horario.horaCierra %}
-                            {{horario.horaAbre}}-{{horario.horaCierra}} |
+                            {{horario.horaAbre|time:"G:i"}}-{{horario.horaCierra|time:"G:i"}} |
                             {% else %}
                             <p>Aun no hay horarios para este dia</p>
                             {% endif %}
