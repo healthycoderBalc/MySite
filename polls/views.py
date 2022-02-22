@@ -1604,13 +1604,15 @@ def update_perfilCliente(request):
     if form.is_valid():
         form.save()
         return HttpResponseRedirect("/perfilCliente")
+    else:
+        return redirect("polls:verificarCampos")
 
     # add form dictionary to context
     titulo = "Cliente"
     context["form"] = form
     context["titulo"] = titulo
 
-    return render(request, "polls/updateperfilCliente.html", context)
+    return render(request, "polls/updateperfilcliente.html", context)
 
 
 def update_perfilUser(request):
@@ -1631,7 +1633,7 @@ def update_perfilUser(request):
         print("valido")
         return HttpResponseRedirect("/updateperfilCliente")
     else:
-        print("No valido")
+        return redirect("polls:verificarCampos")
 
     # add form dictionary to context
     titulo = "Cliente"
