@@ -131,7 +131,7 @@ class BusinessAreaForm(forms.ModelForm):
         model = BusinessArea
         fields = "__all__"
 
-datosContactohelpText = "<p style='color:red;'>Para número, ingrese el codigo de area seguido del 15 y luego el numero: <b>ej: 343154444444</b>.<br>Para Facebook copie y pegue el link de perfil completo: p ej: <b>www.facebook.com/nombredeminegocio</b>. <br> Para Instagram escriba su nombre de usuario: p ej. <b>misupernegocio</b><br><br><p>"
+datosContactohelpText = "<p style='color:red;'>Para número o whatsapp, ingrese el codigo de area seguido del 15 y luego el numero: <b>ej: 343154444444</b>.<br>Para Facebook copie y pegue el link de perfil completo: p ej: <b>www.facebook.com/nombredeminegocio</b>. <br> Para Instagram escriba su nombre de usuario: p ej. <b>misupernegocio</b><br><br><p>"
 class BusinessContactFormForm(forms.ModelForm):
     # specify the name of model to use
     class Meta:

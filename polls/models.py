@@ -127,7 +127,8 @@ class BusinessContactForm(models.Model):
         if (self.formaContacto.nombre == 'Facebook'):
             enlace = self.datosContacto
         elif (self.formaContacto.nombre == 'Instagram'):
-            enlace = 'https://www.instagram.com/'+self.datosContacto
+            # enlace = 'https://www.instagram.com/'+self.datosContacto
+            enlace = 'instagram://user?username={'+self.datosContacto+'}'
         elif (self.formaContacto.nombre == 'Llamada'):
             separados = self.datosContacto.split("15", 1)
             separados.insert(0,'+549')
