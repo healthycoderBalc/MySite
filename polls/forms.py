@@ -131,15 +131,15 @@ class BusinessAreaForm(forms.ModelForm):
         model = BusinessArea
         fields = "__all__"
 
-datosContactohelpText = "Para número, ingrese el codigo de area seguido del 15 y luego el numero: ej: 343154444444.<br>Para Facebook copie y pegue el link de perfil completo: p ej: www.facebook.com/nombredeminegocio. <br> Para Instagram escriba su nombre de usuario: p ej. misupernegocio<br><br>"
+datosContactohelpText = "<p>Para número, ingrese el codigo de area seguido del 15 y luego el numero: <b>ej: 343154444444</b>.<br>Para Facebook copie y pegue el link de perfil completo: p ej: <b>www.facebook.com/nombredeminegocio</b>. <br> Para Instagram escriba su nombre de usuario: p ej. <b>misupernegocio</b><br><br><p>"
 class BusinessContactFormForm(forms.ModelForm):
     # specify the name of model to use
     class Meta:
         model = BusinessContactForm
         fields = "__all__"
-        widgets = {
-            'datosContacto': forms.TextInput(attrs={'placeholder': 'para Nº incluir el 15, ej: 343154444444'}),
-        }
+        # widgets = {
+        #     'datosContacto': forms.TextInput(attrs={'placeholder': 'para Nº incluir el 15, ej: 343154444444'}),
+        # }
 
 
     def __init__(self, *args, **kwargs):
@@ -152,7 +152,7 @@ class BusinessContactFormForm(forms.ModelForm):
 
 
 
-helpText = "La contraseña no puede ser muy similar a los otros datos; debe contener al menos 8 caracteres; no puede ser muy común; no puede contener solo números<br><br>"
+helpText = "<La contraseña no puede ser muy similar a los otros datos; debe contener al menos 8 caracteres; no puede ser muy común; no puede contener solo números<br><br>"
 
 class RegistroForm(UserCreationForm):
     first_name = forms.CharField(max_length=32)
