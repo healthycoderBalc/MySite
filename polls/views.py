@@ -112,18 +112,20 @@ def update_cliente(request, id):
     # dictionary for initial data with
     # field names as keys
     context = {}
-
-    # fetch the object related to passed id
     obj = get_object_or_404(Client, id=id)
-
+    if request.method == 'POST':
     # pass the object as instance in form
-    form = ClientForm(request.POST or None, instance=obj, user=request.user)
+        form = ClientForm(request.POST or None, instance=obj, user=request.user)
 
-    # save the data from the form and
-    # redirect to detail_view
-    if form.is_valid():
-        form.save()
-        return HttpResponseRedirect("/perfilCliente")
+        # save the data from the form and
+        # redirect to detail_view
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/perfilCliente")
+        else:
+            return redirect("polls:verificarCampos")
+    else:
+        form = ClientForm(user=request.user)
 
     # add form dictionary to context
     titulo = "Cliente"
@@ -1589,25 +1591,19 @@ def perfil(request):
 
 
 def update_perfilCliente(request):
-    # dictionary for initial data with
-    # field names as keys
+
     context = {}
-
-    # fetch the object related to passed id
     obj = get_object_or_404(Client, user__pk=request.user.id)
-
-    # pass the object as instance in form
-    form = ClientForm(request.POST or None, instance=obj, user=request.user)
-
-    # save the data from the form and
-    # redirect to detail_view
-    if form.is_valid():
-        form.save()
-        return HttpResponseRedirect("/perfilCliente")
+    if request.method == 'POST':
+        form = ClientForm(request.POST or None, instance=obj, user=request.user)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/perfilCliente")
+        else:
+            return redirect("polls:verificarCampos")
     else:
-        return redirect("polls:verificarCampos")
+        form = ClientForm(user=request.user)
 
-    # add form dictionary to context
     titulo = "Cliente"
     context["form"] = form
     context["titulo"] = titulo
@@ -1624,16 +1620,18 @@ def update_perfilUser(request):
     obj = get_object_or_404(User, pk=request.user.id)
 
     # pass the object as instance in form
-    form = profileForm(request.POST or None, instance=obj)
-
+    
+    if request.method == 'POST':
+        form = profileForm(request.POST or None, instance=obj)
     # save the data from the form and
     # redirect to detail_view
-    if form.is_valid():
-        form.save()
-        print("valido")
-        return HttpResponseRedirect("/updateperfilCliente")
-    else:
-        return redirect("polls:verificarCampos")
+        if form.is_valid():
+            form.save()
+            print("valido")
+            return HttpResponseRedirect("/updateperfilCliente")
+        else:
+            return redirect("polls:verificarCampos")
+    else: form = profileForm(instance=obj)
 
     # add form dictionary to context
     titulo = "Cliente"
