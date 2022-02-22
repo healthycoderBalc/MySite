@@ -20,12 +20,15 @@
                     {% endfor %}</p>
 
                 <p><b>Contacto: </b></p>
+                {% if contactos %}
                 {% for contacto in contactos %}
                 {% if contacto.datosContacto %}
                 <p>{{ contacto.formaContacto.nombre }}:
                     {{ contacto.datosContacto }}
                     <a href="/updateNegocioformacontacto/{{contacto.id}}" class="btn btn-primary"><i
                             class="bi bi-pencil-square"></i></a>
+                    <a href="/deleteNegocioformacontacto/{{contacto.id}}" class="btn btn-danger"><i
+                                class="bi bi-dash-lg"></i></a>
 
                 </p>
                 {% else %}
@@ -36,6 +39,9 @@
                 </p>
                 {% endif %}
                 {% endfor %}
+                {% else %}
+                <p>Aun no hay datos de contacto</p>
+                {% endif %}
 
                 <p><b>Horario: </b></p>
                 {% for dia in dias2 %}
@@ -49,13 +55,14 @@
                                 {{horario.horaAbre}} - {{horario.horaCierra}}
                                     <a href="/updateNegociohorariodia/{{horario.id}}" class="btn btn-primary"><i
                                             class="bi bi-pencil-square"></i></a>
-                                    
+                                    <a href="/deleteNegociohorariodia/{{horario.id}}" class="btn btn-danger"><i
+                                                class="bi bi-dash-lg"></i></a>
                                 </p>
                             {% else %}
                                 {{ horario.diaSemana.dia }}:
                                     <small>(No se ha añadido hora)</small>
                                     <a href="/updateNegociohorariodia/{{horario.id}}" class="btn btn-success"><i
-                                            class="bi bi-plus-lg"></i></a>
+                                            class="bi bi-pencil-square"></i></a>
                                 </p>
                             {% endif %}    
                         {% endif %}
@@ -77,7 +84,7 @@
                             <a href="/process/{{data.id}}" class="btn btn-outline-danger">Pagar suscripcion</a>
                         {% endif %}
                     {% endif %}
-                    <a href="/listarNegociosCliente/" class="btn btn-outline-primary">Volver</a>
+                    <a href="/listarNegociosCliente/" class="btn btn-outline-primary">Listo</a>
                     <a href="/updateNegocio/{{data.id}}" class="btn btn-primary">Modificar</a>
                     <a href="/deleteNegocio/{{data.id}}" class="btn btn-danger">Eliminar</a>
                 </div>

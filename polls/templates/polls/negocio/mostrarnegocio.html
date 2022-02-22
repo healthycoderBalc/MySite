@@ -27,11 +27,15 @@
                 </div>
                 <div class="row ">
                     <div class="col-12 col-md-6 mb-3 d-flex justify-content-between">
+                    {% if contactos %}
                     {% for contacto in contactos %}
                                 <a class="{{contacto.getColor}}" href="{{contacto.getEnlace}}">
                                     <i class="{{contacto.getIcono}}"></i>
                                 </a>
                     {% endfor %}
+                    {% else %}
+                        <p>Aun no hay datos de contacto</p>
+                    {% endif %}
                     </div>
                 </div>
                 <div class="mw-100 bg-light text-dark">
@@ -44,14 +48,22 @@
                 <div class="mw-100 bg-light text-dark">
                     <p><b>Horario: </b></p>
                 </div>
+                {% if dias2 %}
                 {% for dia in dias2 %}
                     <p><b>{{dia.dia}}:</b></p><p>
                     {% for horario in horarios %}
                         {% if horario.diaSemana.dia == dia.dia %}
+                            {% if horario.horaAbre or horario.horaCierra %}
                             {{horario.horaAbre}}-{{horario.horaCierra}} |
+                            {% else %}
+                            <p>Aun no hay horarios para este dia</p>
+                            {% endif %}
                         {% endif %}
                     {% endfor %}</p>
                 {% endfor %}
+                {% else %}
+                <p>Aun no hay horarios cargados</p>
+                {% endif %}
                 <div class="mw-100 bg-light text-dark">
                     <span class="card-title"> <b>Dirección: </b> {{ data.direccion }}</span>
                 </div>

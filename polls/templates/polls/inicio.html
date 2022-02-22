@@ -28,12 +28,13 @@
 
 <select class="form-select" aria-label="Select" onchange="location = this.value;">
     <option selected>Filtrar por</option>
+    <option value="/seleccionHorarios">Horario</option>
     <optgroup label="Rubro">
         {% for cat in categorias %}
         <option value="/negociosPorRubro/{{cat.id}}">{{cat.nombre}}</option>
         {% endfor %}
     </optgroup>
-    <option value="/seleccionHorarios">Horario</option>
+    
     {% if rubro or dia %}
         <option value="/">Mostrar todos</option>
     {% endif %}

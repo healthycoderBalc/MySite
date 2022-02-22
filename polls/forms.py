@@ -152,7 +152,7 @@ class BusinessContactFormForm(forms.ModelForm):
 
 
 
-helpText = "<La contraseña no puede ser muy similar a los otros datos; debe contener al menos 8 caracteres; no puede ser muy común; no puede contener solo números<br><br>"
+helpText = "La contraseña no puede ser muy similar a los otros datos; debe contener al menos 8 caracteres; no puede ser muy común; no puede contener solo números<br><br>"
 
 class RegistroForm(UserCreationForm):
     first_name = forms.CharField(max_length=32)

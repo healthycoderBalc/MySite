@@ -67,8 +67,8 @@ class Business(models.Model):
     cliente = models.ForeignKey(Client, on_delete=models.CASCADE)
     suscripcion = models.ForeignKey(Subscription, on_delete=models.SET_DEFAULT, default= '')
     rubros = models.ManyToManyField(Heading, through='BusinessArea')
-    formasContacto = models.ManyToManyField(ContactForm, through='BusinessContactForm')
-    diasSemana = models.ManyToManyField(Dayweek, through='Businesshourday')
+    formasContacto = models.ManyToManyField(ContactForm, through='BusinessContactForm', blank=True)
+    diasSemana = models.ManyToManyField(Dayweek, through='Businesshourday', blank=True)
     paid = models.BooleanField(default=False, verbose_name="Destacado - Mes pagado")
     fecha_ultimo_pago = models.DateField('Fecha ultimo pago', blank=True, null=True)
 
