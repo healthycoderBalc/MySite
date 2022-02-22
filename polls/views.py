@@ -1822,7 +1822,7 @@ def buscarCliente(request):
             print(query)
             context["dataset"] = clientes
             context["query"] = query
-            direccion = "polls/cliente/listarClientes.html"
+            direccion = "polls/cliente/listarclientes.html"
         else:
             context["titulo"] = "No autorizado"
             direccion = "polls/unauthorized.html"
