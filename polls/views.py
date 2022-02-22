@@ -1807,7 +1807,9 @@ def buscarCliente(request):
             clientes = []
             if request.method == "GET":
                 query = request.GET.get('q', None)
+                print("get")
                 if query:
+                    print("hay query")
                     clientes = Client.objects.filter(
                         # Q(telefono__icontains=query)
                         Q(user__first_name__icontains=query) | Q(
