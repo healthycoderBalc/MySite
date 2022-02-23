@@ -73,8 +73,8 @@ class BusinessForm(forms.ModelForm):
         self.fields["paid"].disabled = True
         self.fields["fecha_ultimo_pago"].disabled = True
 
-        self.fields['diasSemana'].help_text = many2manyhelptext
-        self.fields['formasContacto'].help_text = many2manyhelptext
+        # self.fields['diasSemana'].help_text = many2manyhelptext
+        # self.fields['formasContacto'].help_text = many2manyhelptext
         self.fields['rubros'].help_text = many2manyhelptext
                
         self.fields['formasContacto'].label = "Formas de contacto"
@@ -131,7 +131,7 @@ class BusinessAreaForm(forms.ModelForm):
         model = BusinessArea
         fields = "__all__"
 
-datosContactohelpText = "<p style='color:red;'>Para número o whatsapp, ingrese el codigo de area seguido del 15 y luego el numero: <b>ej: 343154444444</b>.<br>Para Facebook copie y pegue el link de perfil completo: p ej: <b>www.facebook.com/nombredeminegocio</b>. <br> Para Instagram escriba su nombre de usuario: p ej. <b>misupernegocio</b><br><br><p>"
+datosContactohelpText = "<p style='color:red;'>Para <b>WhatsApp</b>, ingrese el codigo de area seguido del 15 y luego el numero: <b>ej: 343154444444</b>.Para <b>Llamada</b>, ingrese el numero sin espacios: <b>ej: 3434334422</b><br>Para <b>Facebook</b> copie y pegue el link de perfil completo: p ej: <b>www.facebook.com/nombredeminegocio</b>. <br> Para <b>Instagram<b> escriba su nombre de usuario: p ej. <b>misupernegocio</b><br><br><p>"
 class BusinessContactFormForm(forms.ModelForm):
     # specify the name of model to use
     class Meta:
@@ -178,6 +178,9 @@ class RegistroForm(UserCreationForm):
         self.fields['first_name'].label = "Nombre"
         self.fields['last_name'].label = "Apellido"
         self.fields['password2'].label = "Confirme la contraseña"
+
+        
+
 
 
 class AutenticacionForm(AuthenticationForm):

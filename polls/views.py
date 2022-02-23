@@ -854,7 +854,7 @@ def mostrarNegocio(request, id):
     context["contactos"] = contactos
 
     horarios = Businesshourday.objects.filter(
-        negocio__id=id).order_by('diaSemana__id')
+        negocio__id=id).order_by('diaSemana__id', 'horaAbre')
     context["horarios"] = horarios
 
     dias2 = Dayweek.objects.filter(business__id = id).order_by('id').distinct()
@@ -884,7 +884,7 @@ def mostrarNegocioAdd(request, id):
             context["contactos"] = contactos
 
             horarios = Businesshourday.objects.filter(
-                negocio__id=id).order_by('diaSemana__id')
+                negocio__id=id).order_by('diaSemana__id', 'horaAbre')
             context["horarios"] = horarios
 
             dias2 = Dayweek.objects.filter(business__id = id).order_by('id').distinct()
@@ -972,7 +972,7 @@ def delete_negocio(request, id):
                 obj.delete()
                 # after deleting redirect to
                 # home page
-                return HttpResponseRedirect("/")
+                return HttpResponseRedirect("/listarNegociosCliente/")
 
             titulo = "Negocio"
             context["titulo"] = titulo
@@ -1143,10 +1143,11 @@ def delete_negociohorariodia(request, id):
                 obj.delete()
                 # after deleting redirect to
                 # home page
-                return HttpResponseRedirect("/listarNegociohorariodias/")
+                return HttpResponseRedirect("/mostrarNegocioAdd/"+ negocio.id)
 
             titulo = "Negocio Horario Dia"
             context["titulo"] = titulo
+            context["negocio"] = negocio
             direccion = "polls/intermedio/deletenegociohorariodia.html"
         else:
             context["titulo"] = "No autorizado"
@@ -1242,6 +1243,7 @@ def update_negociorubro(request, id):
             titulo = "Negocio Rubro"
             context["form"] = form
             context["titulo"] = titulo
+            context["negocio"] = negocio
             direccion = "polls/intermedio/updatenegociorubro.html"
 
         else:
@@ -1275,10 +1277,11 @@ def delete_negociorubro(request, id):
                 obj.delete()
                 # after deleting redirect to
                 # home page
-                return HttpResponseRedirect("/listarNegociorubros/")
+                return HttpResponseRedirect("/mostrarNegocioAdd/"+ negocio.id)
 
             titulo = "Negocio Rubro"
             context["titulo"] = titulo
+            context["negocio"] = negocio
             direccion = "polls/intermedio/deletenegociorubro.html"
         else:
             context["titulo"] = "No autorizado"
@@ -1375,6 +1378,7 @@ def update_negocioformacontacto(request, id):
             titulo = "Negocio Forma Contacto"
             context["form"] = form
             context["titulo"] = titulo
+            negocio["negocio"] = negocio
             direccion = "polls/intermedio/updatenegocioformacontacto.html"
 
         else:
@@ -1433,10 +1437,11 @@ def delete_negocioformacontacto(request, id):
                 obj.delete()
                 # after deleting redirect to
                 # home page
-                return HttpResponseRedirect("/listarNegocioformacontactos/")
+                return HttpResponseRedirect("/mostrarNegocioAdd/"+ negocio.id)
 
             titulo = "Negocio Forma Contacto"
             context["titulo"] = titulo
+            context["negocio"] = negocio
             direccion = "polls/intermedio/deletenegocioformacontacto.html"
 
         else:
